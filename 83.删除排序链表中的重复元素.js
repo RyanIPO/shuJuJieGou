@@ -36,7 +36,21 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var deleteDuplicates = function(head) {
-    
-};
+var deleteDuplicates = function (head) {
+  if (!head || head.val == null) return head
+  //当前节点指向头节点
+  let currNode = head
+  // 当前节点的下一个节点存在
+  while (currNode.next) {
+    // 当当前节点的值等于下一个节点的值
+    if (currNode.val === currNode.next.val) {
+      // 相当于删除当前节点的下一个节点
+      currNode.next = currNode.next.next
 
+    } else { //当当前节点的值不等于下一个节点的值
+      //改变当前节点
+      currNode = currNode.next
+    }
+  }
+  return head
+};
